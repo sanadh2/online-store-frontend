@@ -1,0 +1,606 @@
+[
+    {
+        "title": "To Kill a Mockingbird",
+        "description": "A novel set in the American South during the 1930s, addressing issues of racial injustice.",
+        "author": "Harper Lee",
+        "category": [
+            "Fiction"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 281,
+        "discount": 0,
+        "imageUrl": "https://cdn.britannica.com/21/182021-050-666DB6B1/book-cover-To-Kill-a-Mockingbird-many-1961.jpg",
+        "rating": 4.8,
+        "price": 3582,
+        "featured": true
+    },
+    {
+        "title": "The Hobbit",
+        "description": "A fantasy novel about the journey of Bilbo Baggins, who embarks on an adventure to reclaim the treasure guarded by the dragon Smaug.",
+        "author": "J.R.R. Tolkien",
+        "category": [
+            "Fantasy",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 310,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/41R23wIsc-L._SY445_SX342_.jpg",
+        "rating": 4.6,
+        "price": 3375,
+        "featured": true
+    },
+    {
+        "title": "The Count of Monte Cristo",
+        "description": "An adventure novel about a young sailor named Edmond Dantès who is falsely accused and imprisoned, but later escapes to seek revenge.",
+        "author": "Alexandre Dumas",
+        "category": [
+            "Fiction",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 987,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/91wnkYbyjyL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "price": 7447,
+        "featured": false
+    },
+    {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "description": "The first book in the Harry Potter series, following the journey of a young wizard, Harry Potter, as he attends Hogwarts School of Witchcraft and Wizardry.",
+        "author": "J.K. Rowling",
+        "category": [
+            "Fantasy",
+            "Young Adult"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 320,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/91wnkYbyjyL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "price": 3692,
+        "featured": false
+    },
+    {
+        "title": "The Hunger Games",
+        "description": "The first book in The Hunger Games trilogy, set in a dystopian world where teenagers fight to the death in a televised event.",
+        "author": "Suzanne Collins",
+        "category": [
+            "Science Fiction",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 374,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/9156QjXBIHL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.5,
+        "price": 824,
+        "featured": false
+    },
+    {
+        "title": "The Da Vinci Code",
+        "description": "A mystery thriller novel that follows symbologist Robert Langdon as he investigates a murder in the Louvre Museum and discovers a hidden secret.",
+        "author": "Dan Brown",
+        "category": [
+            "Mystery",
+            "Thriller"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/71y4X5150dL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "language": "English",
+        "pages": 454,
+        "discount": 15,
+        "price": 1378,
+        "featured": false
+    },
+    {
+        "title": "The Lord of the Rings",
+        "description": "A fantasy epic that follows the quest to destroy the One Ring and defeat the Dark Lord Sauron.",
+        "author": "J.R.R. Tolkien",
+        "category": [
+            "Fantasy",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/71-k7upkQjL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.9,
+        "language": "English",
+        "pages": 1178,
+        "discount": 20,
+        "price": 4781,
+        "featured": true
+    },
+    {
+        "title": "The Girl with the Dragon Tattoo",
+        "description": "A crime thriller novel that follows journalist Mikael Blomkvist and hacker Lisbeth Salander as they investigate a disappearance.",
+        "author": "Stieg Larsson",
+        "category": [
+            "Mystery",
+            "Thriller"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81eUnIwvhOL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.4,
+        "language": "Swedish",
+        "pages": 590,
+        "discount": 0,
+        "price": 2401,
+        "featured": true
+    },
+    {
+        "title": "The Chronicles of Narnia",
+        "description": "A series of fantasy novels set in the fictional realm of Narnia, featuring various adventures and allegorical themes.",
+        "author": "C.S. Lewis",
+        "category": [
+            "Fantasy",
+            "Young Adult"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/71KxpmtXOaL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "language": "English",
+        "pages": 1728,
+        "discount": 25,
+        "price": 3213,
+        "featured": false
+    },
+    {
+        "title": "Percy Jackson & the Olympians",
+        "description": "A series of fantasy-adventure novels that follows the demigod Percy Jackson as he discovers his true identity and battles mythological creatures.",
+        "author": "Rick Riordan",
+        "category": [
+            "Fantasy",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81erGSXEFkL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 1392,
+        "discount": 0,
+        "price": 1192,
+        "featured": false
+    },
+    {
+        "title": "Sherlock Holmes",
+        "description": "A collection of detective stories featuring the brilliant detective Sherlock Holmes and his loyal companion Dr. John Watson.",
+        "author": "Arthur Conan Doyle",
+        "category": [
+            "Mystery"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81OLQFMIIVL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.9,
+        "language": "English",
+        "pages": 1200,
+        "discount": 10,
+        "price": 5088,
+        "featured": true
+    },
+    {
+        "title": "The Catcher in the Rye",
+        "description": "A novel narrated by a teenager named Holden Caulfield, who describes his experiences in New York City after being expelled from prep school.",
+        "author": "J.D. Salinger",
+        "category": [
+            "Fiction",
+            "Young Adult"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "images/the-catcher-in-the-rye.jpg",
+        "rating": 4.5,
+        "language": "English",
+        "pages": 277,
+        "discount": 0,
+        "price": 4661,
+        "featured": false
+    },
+    {
+        "title": "The Kite Runner",
+        "description": "A novel that follows the story of Amir, a young boy from Afghanistan, as he navigates friendship, betrayal, and redemption.",
+        "author": "Khaled Hosseini",
+        "category": [
+            "Fiction"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81IzbD2IiIL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "language": "English",
+        "pages": 371,
+        "discount": 15,
+        "price": 4924,
+        "featured": true
+    },
+    {
+        "title": "The Secret Garden",
+        "description": "A children's novel that tells the story of Mary Lennox, a young girl who discovers a hidden garden on her uncle's estate.",
+        "author": "Frances Hodgson Burnett",
+        "category": [
+            "Fantasy"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81BXzlicRRL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 331,
+        "discount": 0,
+        "price": 6003,
+        "featured": false
+    },
+    {
+        "title": "The Stand",
+        "description": "A post-apocalyptic horror novel that follows the survivors of a global pandemic as they confront dark forces in a world decimated by disease.",
+        "author": "Stephen King",
+        "category": [
+            "Fiction",
+            "Horror"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/91YWt2jiowL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "language": "English",
+        "pages": 1153,
+        "discount": 20,
+        "price": 8576,
+        "featured": true
+    },
+    {
+        "title": "The Road Less Traveled",
+        "description": "A self-help book that explores love, growth, and spiritual growth, offering insights into the complexities of human relationships.",
+        "author": "M. Scott Peck",
+        "category": [
+            "Self-Help"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/71Ph6sVklpL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 316,
+        "discount": 0,
+        "price": 1360,
+        "featured": true
+    },
+    {
+        "title": "Life of Pi",
+        "description": "A novel that follows the story of Piscine Molitor Patel, a boy who survives a shipwreck and is stranded on a lifeboat in the Pacific Ocean with a Bengal tiger named Richard Parker.",
+        "author": "Yann Martel",
+        "category": [
+            "Fiction",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/816NlEQFMOL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.5,
+        "language": "English",
+        "pages": 460,
+        "discount": 15,
+        "price": 6048,
+        "featured": true
+    },
+    {
+        "title": "The Martian",
+        "description": "A science fiction novel that follows astronaut Mark Watney, who is stranded on Mars and must use his ingenuity to survive until rescue.",
+        "author": "Andy Weir",
+        "category": [
+            "Science Fiction",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81bdOXBN+6L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "language": "English",
+        "pages": 369,
+        "discount": 0,
+        "price": 4470,
+        "featured": true
+    },
+    {
+        "title": "The Book Thief",
+        "description": "A historical novel set in Nazi Germany, narrated by Death and following the story of a young girl named Liesel Meminger who steals books and shares them with others.",
+        "author": "Markus Zusak",
+        "category": [
+            "Fiction"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81bdOXBN+6L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 552,
+        "discount": 10,
+        "price": 393,
+        "featured": false
+    },
+    {
+        "title": "The Fault in Our Stars",
+        "description": "A young adult romance novel that tells the story of Hazel Grace Lancaster, a sixteen-year-old cancer patient, who falls in love with Augustus Waters, a fellow cancer patient.",
+        "author": "John Green",
+        "category": [
+            "Young Adult",
+            "Romance"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/817tHNcyAgL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "language": "English",
+        "pages": 313,
+        "discount": 0,
+        "price": 2405,
+        "featured": false
+    },
+    {
+        "title": "Gone Girl",
+        "description": "A psychological thriller novel that follows the mysterious disappearance of Amy Dunne and the subsequent investigation, revealing secrets and lies in her marriage.",
+        "author": "Gillian Flynn",
+        "category": [
+            "Mystery",
+            "Thriller"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/61Sx28fdUoL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.5,
+        "language": "English",
+        "pages": 432,
+        "discount": 15,
+        "price": 8789,
+        "featured": false
+    },
+    {
+        "title": "The Shining",
+        "description": "A horror novel that follows Jack Torrance, an aspiring writer and recovering alcoholic, who becomes the winter caretaker of the isolated and haunted Overlook Hotel.",
+        "author": "Stephen King",
+        "category": [
+            "Fiction",
+            "Horror"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81zqohMOk-L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 447,
+        "discount": 0,
+        "price": 476,
+        "featured": true
+    },
+    {
+        "title": "Moby-Dick",
+        "description": "A novel that tells the story of the obsessive quest of Captain Ahab for revenge on Moby Dick, a giant white sperm whale.",
+        "author": "Herman Melville",
+        "category": [
+            "Fiction",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 654,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/81ei7WkVVdL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.5,
+        "price": 6895,
+        "featured": false
+    },
+    {
+        "title": "The Odyssey",
+        "description": "An ancient Greek epic poem attributed to Homer, chronicling the adventures of Odysseus during his journey home from the Trojan War.",
+        "author": "Homer",
+        "category": [
+            "Fiction",
+            "Adventure"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "Greek",
+        "pages": 384,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/71I9il-sk2L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "price": 2796,
+        "featured": false
+    },
+    {
+        "title": "The Brothers Grimm Fairy Tales",
+        "description": "A collection of German fairy tales compiled by the Brothers Grimm, featuring stories like Cinderella, Snow White, and Hansel and Gretel.",
+        "author": "Brothers Grimm",
+        "category": [
+            "Fiction",
+            "Fantasy"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "German",
+        "pages": 352,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/71gzj5EJ7dL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "price": 7851,
+        "featured": false
+    },
+    {
+        "title": "The Adventures of Sherlock Holmes",
+        "description": "A collection of detective stories featuring the famous detective Sherlock Holmes and his loyal friend Dr. John Watson.",
+        "author": "Arthur Conan Doyle",
+        "category": [
+            "Mystery"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 307,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/713c-+jbQ-L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.9,
+        "price": 9658,
+        "featured": false
+    },
+    {
+        "title": "Frankenstein",
+        "description": "A Gothic novel that tells the story of Victor Frankenstein, a young scientist who creates a grotesque creature in an unorthodox scientific experiment.",
+        "author": "Mary Shelley",
+        "category": [
+            "Fiction",
+            "Horror"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 280,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/71IJX3fCe9L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "price": 9868,
+        "featured": false
+    },
+    {
+        "title": "Dracula",
+        "description": "A Gothic horror novel that tells the story of Count Dracula's attempt to move from Transylvania to England so he may find new blood and spread the undead curse.",
+        "author": "Bram Stoker",
+        "category": [
+            "Fiction",
+            "Horror"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "English",
+        "pages": 418,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/811Rn7iXd2L._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "price": 1920,
+        "featured": false
+    },
+    {
+        "title": "Anna Karenina",
+        "description": "A novel that explores themes of love, infidelity, jealousy, and redemption through the tragic story of the aristocrat Anna Karenina.",
+        "author": "Leo Tolstoy",
+        "category": [
+            "Fiction",
+            "Romance"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "Russian",
+        "pages": 964,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/71O3PTUA3vL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "price": 8454,
+        "featured": false
+    },
+    {
+        "title": "War and Peace",
+        "description": "A historical novel that chronicles the history of the French invasion of Russia and the impact of the Napoleonic era on Tsarist society.",
+        "author": "Leo Tolstoy",
+        "category": [
+            "Fiction"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "language": "Russian",
+        "pages": 1225,
+        "discount": 0,
+        "imageUrl": "https://m.media-amazon.com/images/I/71O3PTUA3vL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.9,
+        "price": 6644,
+        "featured": true
+    },
+    {
+        "title": "Pride and Prejudice",
+        "description": "A romantic novel that follows the emotional development of Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, education, and marriage in the society of the landed gentry of early 19th-century England.",
+        "author": "Jane Austen",
+        "category": [
+            "Fiction",
+            "Romance"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/51yAW6H79GL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.9,
+        "language": "English",
+        "pages": 432,
+        "discount": 25,
+        "price": 6042,
+        "featured": true
+    },
+    {
+        "title": "Jane Eyre",
+        "description": "A novel that follows the experiences of its eponymous character, including her growth to adulthood and her love for Mr. Rochester, the brooding master of Thornfield Hall.",
+        "author": "Charlotte Brontë",
+        "category": [
+            "Fiction",
+            "Romance"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/61cT0E8wCUS._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "language": "English",
+        "pages": 532,
+        "discount": 0,
+        "price": 5884,
+        "featured": false
+    },
+    {
+        "title": "Wuthering Heights",
+        "description": "A novel that follows the intense and passionate love story between Catherine Earnshaw and Heathcliff, set in the Yorkshire moors.",
+        "author": "Emily Brontë",
+        "category": [
+            "Fiction",
+            "Romance"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/61cT0E8wCUS._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 342,
+        "discount": 20,
+        "price": 4050,
+        "featured": true
+    },
+    {
+        "title": "Sense and Sensibility",
+        "description": "A novel that follows the romantic relationships of Elinor and Marianne Dashwood, as they navigate the societal expectations and financial struggles of the early 19th century.",
+        "author": "Jane Austen",
+        "category": [
+            "Fiction",
+            "Romance"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/71Phb28mfbL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.6,
+        "language": "English",
+        "pages": 352,
+        "discount": 0,
+        "price": 1629,
+        "featured": true
+    },
+    {
+        "title": "The Secret Garden",
+        "description": "A novel that follows Mary Lennox, a young girl who discovers a hidden, neglected garden on her uncle's estate, unlocking secrets of the past and transforming her own life.",
+        "author": "Frances Hodgson Burnett",
+        "category": [
+            "Fiction",
+            "Young Adult"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/81Q6gRyrdWL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.7,
+        "language": "English",
+        "pages": 288,
+        "discount": 10,
+        "price": 2269,
+        "featured": false
+    },
+    {
+        "title": "Little Women",
+        "description": "A novel that follows the lives of four sisters—Meg, Jo, Beth, and Amy March—detailing their passage from childhood to womanhood.",
+        "author": "Louisa May Alcott",
+        "category": [
+            "Fiction",
+            "Young Adult"
+        ],
+        "seller": "65c506fb230e69911ff476b2",
+        "imageUrl": "https://m.media-amazon.com/images/I/91wnpmDFcWL._AC_UY327_FMwebp_QL65_.jpg",
+        "rating": 4.8,
+        "language": "English",
+        "pages": 449,
+        "discount": 0,
+        "price": 4394,
+        "featured": true
+    }
+]
