@@ -18,7 +18,7 @@ const AuthProvider: React.FC<PropTypes> = ({
   className,
   ...props
 }) => {
-  const { loggedIn } = useSelector((store: RootState) => store.user);
+  const { loggedIn, trigger } = useSelector((store: RootState) => store.user);
 
   const getUser = useCallback(() => {
     store.dispatch(fetching());
@@ -44,15 +44,15 @@ const AuthProvider: React.FC<PropTypes> = ({
         store.dispatch(fetchUserError(err));
       });
   }, []);
-
   useEffect(() => {
     if (flag) {
       getUser();
     } else {
+      refreshToken();
       const interval = setInterval(refreshToken, 100000);
       return () => clearInterval(interval);
     }
-  }, [refreshToken, getUser, loggedIn]);
+  }, [refreshToken, getUser, loggedIn, trigger]);
 
   if (loggedIn == false) flag = true;
 

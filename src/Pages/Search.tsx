@@ -13,16 +13,17 @@ const Search: React.FC = () => {
   const ratingParams = queryParams.get("rating");
   const authorParams = queryParams.get("author");
   const languageParams = queryParams.get("language");
-  const pageParams = queryParams.get("page");
+  const thisPage =
+    queryParams.get("page") !== null
+      ? parseInt(queryParams.get("page") as string) || 0
+      : 0;
 
   const [books, setBooks] = useState<BookType[] | null>(null);
-  const [page, setPage] = useState<number>(
-    pageParams ? parseInt(pageParams) : 0
-  );
   const [nbh, setNbh] = useState<number>(0);
   const [categories, setCategories] = useState<string[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
 
+  const [page, setPage] = useState(thisPage);
   useEffect(() => {
     const search = searchvalue;
     filterBookApi(search, page, categoryParams, ratingParams, languageParams)
@@ -49,9 +50,9 @@ const Search: React.FC = () => {
   const startIndex = page * 10 + 1;
   const endIndex = Math.min((page + 1) * 10, nbh);
   return (
-    <div className="flex min-h-svh pb-10">
-      <aside className="w-40 sm:w-52 md:w-60 lg:w-72 border-r flex flex-col items-center ">
-        <div className=" w-full px-4 h-[50svh] sticky top-20">
+    <div className="flex items-start md:flex-row flex-col h-full divide-y-2 divide-x-0 md:divide-x-2 md:divide-y-0">
+      <div className="sticky md:top-[40svh] z-3 bg-neutral-100 dark:bg-neutral-800">
+        <aside className="w-full">
           <FilterSearch
             categoryParams={categoryParams}
             authorParams={authorParams}
@@ -60,10 +61,11 @@ const Search: React.FC = () => {
             categories={categories}
             languages={languages}
           />
-        </div>
-      </aside>
-      <div className="mt-20 flex justify-center h-full items-center flex-col w-full">
-        <ul className="ml-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 place-self-auto gap-10">
+        </aside>
+      </div>
+
+      <div className=" py-5 flex justify-center h-full items-center flex-col w-full">
+        <ul className="ml-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 place-self-auto gap-10">
           {books?.map((el) => (
             <BookCard
               key={el._id}
@@ -88,7 +90,7 @@ const Search: React.FC = () => {
             <button
               type="submit"
               onClick={() => setPage(page - 1)}
-              className={`${page == 0 ? "hidden" : "block"} px-4 py-1 border border-current rounded bg-neutral-900 text-white text-lg dark:text-black dark:bg-neutral-100`}
+              className={`${thisPage == 0 ? "hidden" : "block"} px-4 py-1 border border-current rounded bg-neutral-900 text-white text-lg dark:text-black dark:bg-neutral-100`}
             >
               previous
             </button>

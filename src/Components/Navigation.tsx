@@ -51,7 +51,6 @@ const MainNavigation: React.FC = () => {
   const { loggedIn, data: userData } = useSelector(
     (store: RootState) => store.user
   );
-  // console.log(userData);
   const { length: cartLength } = useSelector((store: RootState) => store.cart);
   return (
     <nav className="h-20 z-50 sticky top-0 shadow-md backdrop-blur-md shadow-neutral-300 dark:shadow-transparent dark:backdrop-blur-0  bg-transparent dark:bg-neutral-950 dark:text-white flex justify-evenly text-black items-center gap-2 md:gap-4  px-2 md:px-4 lg:px-10">
@@ -96,7 +95,7 @@ const MainNavigation: React.FC = () => {
           </Link>
           <Link to={"my-wishlist"} className="relative hidden md:block">
             <TooltipItem toolTip="wish list">
-              <Heart className="h-6 w-6 md:h-8 md:w-8 " />
+              <Heart className="h-8 w-8 " />
               <span className="-top-2 -right-2  absolute text-white w-4 h-4 aspect-square flex justify-center items-center rounded-full text-xs bg-green-500 dark:bg-other2">
                 {userData?.wishList.length}
               </span>
@@ -106,17 +105,18 @@ const MainNavigation: React.FC = () => {
           <DropDownMenu
             className=""
             trigger={
-              !userData?.avatar ? (
-                <LucideCircleUserRound className="h-6 w-6 md:h-8 md:w-8 " />
-              ) : (
-                <img
-                  src={server + userData?.avatar}
-                  alt=""
-                  loading="lazy"
-                  onError={(e) => console.log(e)}
-                  className=" max-h-8 max-w-8  rounded-full object-cover border-2 hover:border-green-600 aspect-square dark:border-border border-green-500"
-                />
-              )
+              <div className="size-8">
+                {!userData?.avatar ? (
+                  <LucideCircleUserRound className="h-6 w-6 md:h-8 md:w-8 " />
+                ) : (
+                  <img
+                    src={server + userData?.avatar}
+                    alt=""
+                    loading="lazy"
+                    className=" rounded-full  object-cover border-2 hover:border-green-600 dark:border-border border-green-500"
+                  />
+                )}
+              </div>
             }
           >
             <div className=" ml-2 flex flex-col gap-1.5">

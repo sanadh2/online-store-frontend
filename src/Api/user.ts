@@ -6,8 +6,9 @@ import type {
   SignInResponseType,
   ErrorResponseType,
   GetUserResponseType,
+  UpdateUserResponseType,
 } from "./types";
-
+import { initialStateType as UpdateuserType } from '../Pages/Profile/EditProfile';
 const baseApi = axios.create({
   baseURL:baseURL+"user",
   withCredentials: true,
@@ -98,6 +99,7 @@ export const getUserApi = async () => {
 };
 
 export const getRefreshTokenApi = async () => {
+  
   try {
     const response: AxiosResponse<GetUserResponseType> =
       await baseApi.get<GetUserResponseType>("/refresh-token/");
@@ -115,21 +117,35 @@ export const getRefreshTokenApi = async () => {
     }
   }
 };
-// export const updateUser=async()=>{
-//   try {
-//     const response: AxiosResponse<{success:false,msg:string}> =
-//       await baseApi.patchForm<GetUserResponseType>("/update-user");
-//     const { data } = response;
-//     return data.user;
-//   } catch (error) {
-//     console.error("An error occurred during fetchingUser:", error);
-//     if (axios.isAxiosError(error)) {
-//       if (error.response) {
-//         const data = error.response.data as ErrorResponseType;
-//         throw data.msg;
-//       } else {
-//         throw "something went wrong";
-//       }
-//     }
-//   }
-// }
+export const updateUserApi=async(data:Partial<UpdateuserType>)=>{
+  const formData = new FormData();
+  data.name && formData.append("name", data.name);
+   data.email && formData.append("email", data.email);
+   data.password&&formData.append("password", data.password);
+   data.phoneNumber&&formData.append("phoneNumber", String(data.phoneNumber));
+   data.city&&formData.append("city", data.city);
+   data.state&&formData.append("state", data.state);
+   data.postalCode&&formData.append("postalCode", data.postalCode);
+   data.country&&formData.append("country", data.country);
+   if (data.avatar) formData.append("avatar", data.avatar);
+  try {
+    const response: AxiosResponse<UpdateUserResponseType> =
+      await baseApi.patchForm<UpdateUserResponseType>("/update-user",formData,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    const { data } = response;
+    return data.msg;
+  } catch (error) {
+    console.error("An error occurred during fetchingUser:", error);
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        const data = error.response.data as ErrorResponseType;
+        throw data.msg;
+      } else {
+        throw "something went wrong";
+      }
+    }
+  }
+}

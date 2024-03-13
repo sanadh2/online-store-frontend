@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import store, { RootState } from "../../redux/store";
 import PasswordStrengthChecker from "./PasswordStrengthChecker";
 import { UserCircle2Icon } from "lucide-react";
+import { updateUserApi } from "../../Api/user";
+import { triggerUserData } from "../../redux/reducers/userReducer";
 
-type initialStateType = {
+export type initialStateType = {
   name: string;
   email: string;
   city: string;
@@ -80,6 +82,7 @@ const EditProfile: React.FC = () => {
       toUpdate.postalCode = postalCode;
     if (state !== initialState.state) toUpdate.state = state;
     console.log(toUpdate);
+    updateUserApi(toUpdate).then(() => store.dispatch(triggerUserData()));
   };
 
   const {

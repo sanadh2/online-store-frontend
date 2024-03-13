@@ -28,21 +28,21 @@ const FilterSearch: React.FC<PropTypes> = ({
     languageParams ? languageParams : undefined
   );
   return (
-    <>
+    <div className="px-1">
       <form
         action=""
-        method="get"
-        className="flex h-full flex-col justify-center gap-3 "
+        method="GET"
+        className="flex gap-2 h-full w-full flex-wrap"
       >
-        <h2 className="text-xl font-Outfit  mt-5 "> Filter</h2>
-        <MySelect
-          setValue={setCategory}
-          value={category}
-          options={categories}
-          name="category"
-          placeholder="Category"
-        />
-        <div className="">
+        <h2 className="text-xl font-Outfit">Filter</h2>
+        <div className="flex flex-row overflow-x-scroll md:overflow-hidden w-full items-center md:flex-col justify-start gap-3 ">
+          <MySelect
+            setValue={setCategory}
+            value={category}
+            options={categories}
+            name="category"
+            placeholder="Category"
+          />
           <MySelect
             setValue={setRating}
             value={rating}
@@ -50,22 +50,23 @@ const FilterSearch: React.FC<PropTypes> = ({
             name="rating"
             placeholder="Rating"
           />
+          <MySelect
+            setValue={setLanguage}
+            value={language}
+            options={languages}
+            name="language"
+            placeholder="Language"
+          />
         </div>
-        <MySelect
-          setValue={setLanguage}
-          value={language}
-          options={languages}
-          name="language"
-          placeholder="Language"
-        />
+
         <button
           type="submit"
-          className="px-4 py-2 bg-black rounded-md text-white dark:bg-white dark:text-black"
+          className="py-1 px-3   text-sm md:text-base font-light md:px-4 md:py-1  md:w-full whitespace-nowrap bg-black rounded text-white dark:bg-white dark:text-black"
         >
           Filter this
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

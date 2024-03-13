@@ -31,6 +31,10 @@ const ListCard: React.FC<PropType> = ({
         <Link to={`/book/${bookID}`} className="w-fit ">
           <img
             src={image}
+            onError={(e) => {
+              e.currentTarget.src = "/Image-Not-Available.png";
+              e.currentTarget.onerror = null;
+            }}
             alt=""
             className="object-center h-32 w-fit object-contain aspect-square"
           />

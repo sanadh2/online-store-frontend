@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import store, { RootState } from "../redux/store";
 import { BookType } from "../Api/types";
 import { getBookDataApi } from "../Api/book";
@@ -16,7 +16,6 @@ const Book: React.FC = () => {
   const [bookInfo, setBookInfo] = useState<BookType>();
   const { data: userData } = useSelector((store: RootState) => store.user);
   const location = useLocation();
-  const navigate = useNavigate();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +24,7 @@ const Book: React.FC = () => {
     selectIsBookInCart(state, bookId)
   );
 
-  console.log(isBookInCart);
+  console.log(location.state);
 
   useEffect(() => {
     if (BookId) {
@@ -53,32 +52,20 @@ const Book: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-[88vh]  p-4 justify-center items-center gap-3">
       <div className="flex flex-col justify-center  p-3 max-w-xl w-full">
-        <div className=" h-16 flex md:hidden  p-3 items-center">
-          <p>
-            Back to{" "}
-            <button onClick={() => navigate(-1)} className="text-green-500">
-              {location.state}
-            </button>
-          </p>
-        </div>
         <div className="h-full w-full ">
           <img
             src={bookInfo?.imageUrl}
+            onError={(e) => {
+              e.currentTarget.src = "/Image-Not-Available.png";
+              e.currentTarget.onerror = null;
+            }}
             alt=""
             loading="lazy"
-            className="h-96 w-fit object-contain object-center "
+            className="h-96 w-fit object-contain object-center rounded-md"
           />
         </div>
       </div>
       <div className="   h-full max-w-xl w-full flex flex-col justify-between gap-3">
-        <div className="hidden  h-16 md:flex p-3 items-center">
-          <p>
-            Back to{" "}
-            <button onClick={() => navigate(-1)} className="text-green-500">
-              {location.state}
-            </button>
-          </p>
-        </div>
         <div className=" h-full pl-3 ">
           <h2 className="text-3xl font-Poppins p-1  text-left">
             {bookInfo?.title}

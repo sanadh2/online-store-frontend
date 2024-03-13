@@ -6,6 +6,7 @@ type StateType = {
   error: null | string;
   data: null | UserType;
   loggedIn: boolean;
+  trigger: boolean;
 };
 
 const initialState: StateType = {
@@ -13,6 +14,7 @@ const initialState: StateType = {
   data: null,
   error: null,
   loggedIn: false,
+  trigger: true,
 };
 
 const userSlice = createSlice({
@@ -41,6 +43,9 @@ const userSlice = createSlice({
       state.loggedIn = false;
       state.loading = false;
     },
+    triggerUserData: (state) => {
+      state.trigger = !state.trigger;
+    },
   },
 });
 
@@ -51,4 +56,5 @@ export const {
   fetching,
   deleteUserData,
   setLoggIn,
+  triggerUserData,
 } = userSlice.actions;

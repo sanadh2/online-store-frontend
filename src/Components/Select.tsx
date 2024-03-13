@@ -27,7 +27,12 @@ const MySelect: React.FC<PropTypes> = ({
 }) => {
   return (
     <Select name={name} value={value} onValueChange={(e) => setValue(e)}>
-      <SelectTrigger className={cn("w-full dark:bg-neutral-950 ", className)}>
+      <SelectTrigger
+        className={cn(
+          "bg-neutral-100 border border-neutral-400 dark:border-transparent dark:bg-neutral-900",
+          className
+        )}
+      >
         <SelectValue placeholder={placeholder} className="" />
       </SelectTrigger>
       <SelectContent>
