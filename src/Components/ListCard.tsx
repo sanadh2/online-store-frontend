@@ -30,6 +30,7 @@ const ListCard: React.FC<PropType> = ({
       <div className="w-full flex justify-center items-center">
         <Link to={`/book/${bookID}`} className="w-fit ">
           <img
+            draggable={false}
             src={image}
             onError={(e) => {
               e.currentTarget.src = "/Image-Not-Available.png";

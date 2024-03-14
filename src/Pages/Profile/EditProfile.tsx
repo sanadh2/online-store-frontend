@@ -155,6 +155,7 @@ const EditProfile: React.FC = () => {
                 <p>Choose Profile Pic</p>
                 {values.avatar ? (
                   <img
+                    draggable={false}
                     src={URL.createObjectURL(values.avatar)}
                     className="w-6 h-6   object-cover rounded-full ml-2"
                   />

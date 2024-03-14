@@ -110,6 +110,7 @@ const MainNavigation: React.FC = () => {
                   <LucideCircleUserRound className="h-6 w-6 md:h-8 md:w-8 " />
                 ) : (
                   <img
+                    draggable={false}
                     src={server + userData?.avatar}
                     alt=""
                     loading="lazy"

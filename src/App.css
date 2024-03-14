@@ -23,6 +23,9 @@
 .no-scroll-tab::-ms-scrollbar-thumb {
   background-color: #888;
 }
+img {
+  user-select: none;
+}
 
 .net-background {
   background:

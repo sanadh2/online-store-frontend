@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { signUpApi } from "../../Api/user";
 import { RxAvatar } from "react-icons/rx";
 import { toast } from "../../Components/ui/use-toast";
+import { Link } from "react-router-dom";
 
 export type SignUpData = {
   name: string;
@@ -203,6 +204,7 @@ const SignUp: React.FC = () => {
             </label>
             {avatar ? (
               <img
+                draggable={false}
                 alt="avatar"
                 id="avatar"
                 src={URL.createObjectURL(avatar)}
@@ -222,6 +224,15 @@ const SignUp: React.FC = () => {
             Submit
           </button>
         </form>
+        <div className="flex justify-end gap-3 w-full mt-4">
+          <p>Already have an account?</p>
+          <Link
+            to={"/sign-in"}
+            className="text-blue-500 underline underline-offset-2 decoration-transparent hover:decoration-current transition-colors duration-300"
+          >
+            Sign In
+          </Link>
+        </div>
       </div>
     </div>
   );

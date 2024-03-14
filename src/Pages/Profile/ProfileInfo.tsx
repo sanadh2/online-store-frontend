@@ -9,6 +9,7 @@ const ProfileInfo: React.FC = () => {
     <div className="w-full h-full flex flex-col justify-center items-center font-Outfit">
       <div className="w-20 h-20 xl:w-40 xl:h-40">
         <img
+          draggable={false}
           src={baseURL + userData?.avatar}
           alt=""
           className="rounded-full object-cover aspect-square"

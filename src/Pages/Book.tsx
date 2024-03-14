@@ -54,6 +54,7 @@ const Book: React.FC = () => {
       <div className="flex flex-col justify-center  p-3 max-w-xl w-full">
         <div className="h-full w-full ">
           <img
+            draggable={false}
             src={bookInfo?.imageUrl}
             onError={(e) => {
               e.currentTarget.src = "/Image-Not-Available.png";

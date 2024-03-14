@@ -38,6 +38,7 @@ const BookCard: React.FC<PropTypes> = ({
       >
         <div className="h-60 dark:bg-neutral-900 w-full flex  justify-center items-center">
           <img
+          
             src={image}
             onError={(e) => {
               e.currentTarget.src = "/Image-Not-Available.png";

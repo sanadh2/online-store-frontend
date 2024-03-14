@@ -43,6 +43,7 @@ const ProductsDropdown: React.FC<PropTypes> = ({ search, dropdown }) => {
           {searchResult.map((book) => (
             <div key={book.author} className="w-full p-1 flex gap-2 h-10">
               <img
+              draggable={false}
                 loading="lazy"
                 src={book.imageUrl}
                 alt={book.title}

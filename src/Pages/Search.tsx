@@ -50,7 +50,7 @@ const Search: React.FC = () => {
   const startIndex = page * 10 + 1;
   const endIndex = Math.min((page + 1) * 10, nbh);
   return (
-    <div className="flex items-start md:flex-row flex-col h-full divide-y-2 divide-x-0 md:divide-x-2 md:divide-y-0">
+    <div className="flex min-h-[80svh] items-start md:flex-row flex-col h-full divide-y-2 divide-x-0 md:divide-x-2 md:divide-y-0">
       <div className="sticky md:top-[40svh] z-3 bg-neutral-100 dark:bg-neutral-800">
         <aside className="w-full">
           <FilterSearch
@@ -64,7 +64,7 @@ const Search: React.FC = () => {
         </aside>
       </div>
 
-      <div className=" py-5 flex justify-center h-full items-center flex-col w-full">
+      <div className=" py-5 min-h-[80svh] flex justify-center h-full items-center flex-col w-full">
         <ul className="ml-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 place-self-auto gap-10">
           {books?.map((el) => (
             <BookCard
@@ -79,7 +79,7 @@ const Search: React.FC = () => {
             />
           ))}
         </ul>
-        <div className="flex justify-between w-full mt-20 items-center px-10">
+        <div className="flex  justify-between w-full mt-20 items-center px-10">
           <div className="">
             <p>
               Showing {startIndex} to {endIndex} of {nbh}

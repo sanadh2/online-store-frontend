@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import BookCard, { LazyBookCard } from "../Components/uiwithprops/BookCard";
+import BookCard, { LazyBookCard } from "../../Components/uiwithprops/BookCard";
 
-import { top5BooksApi } from "../Api/book";
-import type { BookType } from "../Api/types";
+import { top5BooksApi } from "../../Api/book";
+import type { BookType } from "../../Api/types";
+import MyCarousal from "./MyCarousal";
 
 const Home: React.FC = () => {
   const [topFiveBooks, setTopFiveBooks] = useState<BookType[]>([]);
@@ -17,11 +18,14 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className=" ">
-      <div className="h-svh flex justify-center items-end dark:items-center py-40 bg-[url('/bg1.jpg')] dark:bg-[url('/bg1-dark.jpg')] bg-cover bg-bottom bg-neutral-300 dark:bg-neutral-900 bg-no-repeat">
+    <div className="">
+      <div className="h-[39rem] bg-neutral-300 dark:bg-neutral-900 flex justify-center items-center gap-2">
         {/* need to add animation using framer motion: first text-black then change it red */}
-        <h2 className="text-4xl font-Poppins  font-light">
+        <h2 className="text-2xl   w-full font-Poppins flex justify-center items-center h-full  font-light">
           Show some love this Valentine's Day Winter Sale On Now
+        </h2>
+        <h2 className="w-full flex  h-full justify-center items-center">
+          <MyCarousal />
         </h2>
       </div>
       <div className="h-72 justify-center items-center flex">
