@@ -37,14 +37,17 @@ export const theme = {
       Poppins: ["Poppins", "sans-serif"],
       Montserrat: ["Montserrat", "sans-serif"],
       Outfit: ["Outfit", "Arial", "sans-serif"],
+      Kalam: ["Kalam", "cursive"],
     },
     colors: {
-      button: "#FFCA3A",
-      border: "#6a4c93",
-      heading: "#1982C4",
-      title: "#ff595e",
-      other: "#8AC926",
-      other2: "#6E4555",
+      primary: {
+        DEFAULT: "#EACBD2",
+        dark: "",
+      },
+      secondary: {
+        DEFAULT: "#8AA8A7",
+        dark: "#243B4A",
+      },
     },
     screens: {
       xs: "320px",

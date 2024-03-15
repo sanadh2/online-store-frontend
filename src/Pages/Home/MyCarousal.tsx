@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios, { AxiosResponse, isAxiosError } from "axios";
 import { BookType } from "../../Api/types";
 import { ArrowBigLeft, ArrowBigRight, Dot } from "lucide-react";
@@ -33,11 +33,10 @@ const MyCarousal: React.FC = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const nextBook = () => {
+  const nextBook = useCallback(() => {
     if (featuredBooks.length === 0 || isHovered) return;
     setCurrentSlide((prev) => (prev + 1) % featuredBooks.length);
-  };
+  }, [featuredBooks.length, isHovered]);
   const prevSlide = () => {
     setCurrentSlide(
       (prevSlide) =>
@@ -46,7 +45,7 @@ const MyCarousal: React.FC = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextBook, 1000);
+    const interval = setInterval(nextBook, 3000);
     return () => clearInterval(interval);
   }, [nextBook]);
   return (
@@ -68,7 +67,7 @@ const MyCarousal: React.FC = () => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 style={{ translate: `${-100 * currentSlide}%` }}
-                className={`w-full border rounded-md p-3 flex justify-center items-center transition-all duration-500 ease-in-out shrink-0 grow-0`}
+                className={`w-full border border-transparent dark:border-neutral-500 rounded-md p-3 flex justify-center items-center transition-all duration-1000 ease-in-out shrink-0 grow-0`}
               >
                 <img
                   src={book.imageUrl}
@@ -85,7 +84,7 @@ const MyCarousal: React.FC = () => {
         >
           <ArrowBigRight className="" />
         </button>
-        <div className="absolute flex gap-1 justify-center items-center  px-3">
+        <div className="absolute flex gap-1 justify-center items-center w-full  px-3">
           {featuredBooks.map((_, index) => (
             <button
               onClick={() => setCurrentSlide(index)}
@@ -101,3 +100,33 @@ const MyCarousal: React.FC = () => {
 };
 
 export default MyCarousal;
+
+export const LazyMyCarousal: React.FC = () => {
+  return (
+    <div className="w-[50vh] h-full flex flex-col justify-center items-center ">
+      <div className="w-full relative">
+        <button
+          disabled
+          className="size-8 absolute -left-10 top-1/2 -translate-y-1/2 opacity-20 bg-black text-white dark:text-black dark:bg-white aspect-square rounded-full flex justify-center items-center"
+        >
+          <ArrowBigLeft className="" />
+        </button>
+
+        <div className="flex overflow-hidden w-full h-[20rem]">
+          <div
+            className={`w-full border border-transparent dark:border-neutral-400 rounded-md flex justify-center items-center transition-all duration-500 ease-in-out shrink-0 grow-0`}
+          >
+            <div className="w-full inline-block h-full bg-white dark:bg-neutral-700 rounded animate-pulse"></div>
+          </div>
+        </div>
+        <button
+          disabled
+          className="size-8 absolute -right-10 top-1/2 -translate-y-1/2 opacity-20 bg-black text-white dark:text-black dark:bg-white aspect-square rounded-full flex justify-center items-center"
+        >
+          <ArrowBigRight className="" />
+        </button>
+        <div className="h-2 w-full inline-block bg-white dark:bg-neutral-700 rounded animate-pulse"></div>
+      </div>
+    </div>
+  );
+};

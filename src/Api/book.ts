@@ -73,9 +73,9 @@ export const top5BooksApi = async () => {
     if (axios.isAxiosError(error)) {
       if (error.response) {
         const data = error.response.data as ErrorResponseType;
-        throw data.msg;
+        throw new Error( data.msg);
       } else {
-        throw error.message;
+        throw new Error(error.message);
       }
     }
   }
