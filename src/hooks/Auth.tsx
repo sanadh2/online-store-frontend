@@ -8,18 +8,19 @@ import {
 } from "../redux/reducers/userReducer";
 import { setCartLength } from "../redux/reducers/cartReducer";
 import { useSelector } from "react-redux";
+
 interface PropTypes extends React.AllHTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   className?: string;
 }
 let flag = true;
+
 const AuthProvider: React.FC<PropTypes> = ({
   children,
   className,
   ...props
 }) => {
   const { loggedIn, trigger } = useSelector((store: RootState) => store.user);
-
   const getUser = useCallback(() => {
     store.dispatch(fetching());
     getUserApi()

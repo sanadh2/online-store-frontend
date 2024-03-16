@@ -36,7 +36,7 @@ const Search: React.FC = () => {
           />
         </div>
       </div>
-      <div className="w-full bg-gradient-to-r from-primary to-secondary  rounded-[100px] hidden md:flex flex-col  justify-center items-center p-3">
+      <div className="w-full bg-gradient-to-r from-primary to-secondary rounded-[50px] xl:rounded-[100px] hidden md:flex flex-col  justify-center items-center p-3">
         <img
           src="/Shoes.png"
           alt=""

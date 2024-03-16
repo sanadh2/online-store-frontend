@@ -16,9 +16,11 @@ import {
 import { Toaster } from "./Components/ui/toaster";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import PrivateRoute from "./Components/PrivateRoute";
 
 const App: React.FC = () => {
-  const { data: userData } = useSelector((store: RootState) => store.user);
+  const { loggedIn } = useSelector((store: RootState) => store.user);
+
   return (
     <div className="min-h-svh h-full font-Poppins bg-neutral-100 text-black dark:bg-neutral-800  dark:text-white ">
       <Toaster />
@@ -30,18 +32,31 @@ const App: React.FC = () => {
             <Route index element={<Home />} />
             <Route path="search/:searchvalue" element={<Search />} />
             <Route path="book/:BookId" element={<Book />} />
-            <Route path="search" element={<Search />} />
             <Route
-              path="my-wishlist"
-              element={userData ? <WishList /> : <SignIn />}
+              path="wish-list"
+              element={
+                <PrivateRoute isAuthenticated={loggedIn}>
+                  <WishList />
+                </PrivateRoute>
+              }
             />
-            <Route path="/my-cart" element={userData ? <Cart /> : <SignIn />} />
             <Route
-              path="/profile"
-              element={userData ? <Profile /> : <SignIn />}
+              path="my-cart"
+              element={
+                <PrivateRoute isAuthenticated={loggedIn}>
+                  <Cart />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <PrivateRoute isAuthenticated={loggedIn}>
+                  <Profile />
+                </PrivateRoute>
+              }
             />
           </Route>
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

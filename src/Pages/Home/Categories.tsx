@@ -72,8 +72,8 @@ const Categories: React.FC = () => {
             <h3 className="font-semibold text-center">HighHeels</h3>
           </div>
         </div>
-        <div className="flex justify-center mt-6 pb-5  flex-col items-center">
-          <p className="text-neutral-500 w-full px-3 w-1/2  text-center">
+        <div className="flex justify-center mt-10 pb-5  flex-col items-center">
+          <p className="text-neutral-500 text-sm w-full px-3  text-center">
             Walk confidently towards a brighter tomorrow, as your favorite shoes
             elevate not just your style, but your spirit and stride.
           </p>

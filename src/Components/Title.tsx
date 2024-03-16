@@ -11,7 +11,7 @@ const Title: FC<PropTypes> = ({ className, ...props }) => {
     <Link
       to={"/"}
       className={cn(
-        "text-xl md:text-2xl font-Montserrat tracking-tighter px-1 md:px-3 py-1 font-bold whitespace-nowrap",
+        "text-xl md:text-2xl font-Montserrat tracking-tighter p-1 md:p-3 font-bold whitespace-nowrap",
         className
       )}
       {...props}
