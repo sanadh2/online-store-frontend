@@ -16,12 +16,12 @@ const Navigation: React.FC = () => {
 
   return (
     <nav
-      className={`navbar ${scrollPos > 3 && "shadow"} transition-all ease-in-out duration-300 flex h-20 bg-neutral-100  sticky top-0 px-3 md:px-5 lg:px-10 gap-5 lg:gap-20 font-Poppins items-center justify-between`}
+      className={`navbar ${scrollPos > 3 && "shadow"} transition-all ease-in-out duration-300 flex h-20 bg-neutral-100 dark:bg-neutral-800  sticky z-30 top-0 px-3 md:px-5 lg:px-10 gap-5 lg:gap-20 font-Poppins items-center justify-between`}
     >
       <Title
-        className={`${scrollPos > 100 ? "md:text-4xl lg:text-5xl " : "lg:text-3xl"} transition-all ease-in duration-300 `}
+        className={`${scrollPos < 100 ? "md:text-4xl lg:text-5xl " : "lg:text-3xl"} transition-all ease-in duration-300 `}
       />
-      <ul className="w-full flex text-sm lg:text-base items-center  justify-start gap-3 lg:gap-8 font-semibold text-neutral-400 ">
+      <ul className="w-full hidden md:flex text-sm lg:text-base items-center  justify-start gap-3 lg:gap-8 font-semibold text-neutral-400 ">
         <Link
           className={`${location.pathname === "/" ? "text-black" : "hover:text-neutral-600"}`}
           to={"/"}

@@ -20,7 +20,7 @@ import { RootState } from "./redux/store";
 const App: React.FC = () => {
   const { data: userData } = useSelector((store: RootState) => store.user);
   return (
-    <div className="min-h-svh h-full bg-neutral-100 text-black  dark:bg-neutral-800  dark:text-white ">
+    <div className="min-h-svh h-full font-Poppins bg-neutral-100 text-black dark:bg-neutral-800  dark:text-white ">
       <Toaster />
       <BrowserRouter>
         <Routes>

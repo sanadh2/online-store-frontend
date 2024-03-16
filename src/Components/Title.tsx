@@ -16,7 +16,7 @@ const Title: FC<PropTypes> = ({ className, ...props }) => {
       )}
       {...props}
     >
-      Page Turner
+      Shoetopia
     </Link>
   );
 };
