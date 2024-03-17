@@ -44,6 +44,7 @@ export const theme = {
         DEFAULT: "#EACBD2",
         dark: "",
         hover: "#ebbec8",
+        divert: "#e8a2b2",
       },
       secondary: {
         DEFAULT: "#8AA8A7",

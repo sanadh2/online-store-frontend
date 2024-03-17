@@ -5,32 +5,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import store, { RootState } from "../../redux/store";
 import { setLoggIn } from "../../redux/reducers/userReducer";
-
+import Input from "../../Components/ui/Input";
+import useForm from "../../hooks/useForm";
+import { Button } from "../../Components/ui/button";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 export type FormData = {
   email: string;
   password: string;
 };
 
 const SignIn: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const initialState = {
     email: "",
     password: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
   };
+
+  const validate = () => {
+    const errors: Record<string, string> = {};
+    return errors;
+  };
+
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    loginApi(formData)
+  const onSubmit = () => {
+    loginApi(values)
       .then(() => {
         store.dispatch(setLoggIn());
         navigate("/");
@@ -40,14 +40,44 @@ const SignIn: React.FC = () => {
       });
   };
 
+  const {
+    values,
+    handleSubmit,
+    handleInputChange: handleChange,
+  } = useForm(initialState, validate, onSubmit);
+
   const { loggedIn } = useSelector((store: RootState) => store.user);
   useEffect(() => {
     if (loggedIn) navigate("/");
   }, [navigate, loggedIn]);
 
+  const [focus, setFocus] = useState({
+    email: false,
+    password: false,
+  });
+
+  useGSAP(
+    () => {
+      if (focus.email) {
+        gsap.to("#bg", {
+          backgroundColor: "green",
+        });
+      } else if (focus.password) {
+        gsap.to("#bg", {
+          backgroundColor: "red",
+        });
+      } else {
+        gsap.to("#bg", {
+          backgroundColor: "white",
+        });
+      }
+    },
+    { dependencies: [focus.email, focus.password] }
+  );
+
   return (
-    <div className="flex justify-center items-center h-svh">
-      <div className="flex flex-col bg-neutral-200 dark:bg-neutral-900 items-center min-h-96 justify-center  min-w-72 mx-2 w-full max-w-[30rem] dark:shadow-transparent rounded-md shadow-xl  border-2 border-neutral-400 dark:border-transparent p-3 ">
+    <div id="bg" className="flex justify-center items-center h-svh">
+      <div className="flex flex-col bg-primary dark:bg-neutral-900 items-center min-h-96 justify-center  min-w-72 mx-2 w-full max-w-[30rem] dark:shadow-transparent rounded-md shadow-xl  p-3 ">
         <h1 className="text-3xl font-light font-Poppins tracking-wider">
           Login
         </h1>
@@ -56,15 +86,16 @@ const SignIn: React.FC = () => {
             <label htmlFor="email" className="font-Montserrat font-semibold">
               Email:
             </label>
-            <input
+            <Input
               id="email"
               name="email"
               required
               autoComplete="email"
               type="email"
-              value={formData.email}
+              value={values.email}
               onChange={handleChange}
-              className="w-full  pl-3 outline-none  h-10 dark:bg-neutral-800 rounded text-sm border-2 dark:border-transparent border-border/50 focus:border-border"
+              onFocus={() => setFocus({ email: true, password: false })}
+              onBlur={() => setFocus((prev) => ({ ...prev, email: false }))}
               placeholder="Enter your email"
             />
           </div>
@@ -72,27 +103,29 @@ const SignIn: React.FC = () => {
             <label htmlFor="password" className="font-Montserrat font-semibold">
               Password
             </label>
-            <input
+            <Input
               id="password"
               name="password"
               required
               autoComplete="password"
               type="password"
-              value={formData.password}
+              value={values.password}
               onChange={handleChange}
-              className="w-full  pl-3 outline-none  h-10 dark:bg-neutral-800 rounded text-sm border-2 dark:border-transparent border-border/50 focus:border-border"
               placeholder="Enter your password"
+              onFocus={() => setFocus({ email: false, password: true })}
+              onBlur={() => setFocus((prev) => ({ ...prev, password: false }))}
             />
           </div>
 
-          <button
-            className="w-full mt-5 h-10 bg-button rounded dark:text-white  dark:bg-stone-950"
+          <Button
+            variant={"outline"}
+            className="w-full h-12 text-lg mt-3"
             type="submit"
           >
             Submit
-          </button>
+          </Button>
         </form>
-        <div className="flex justify-end gap-3 w-full mt-4">
+        <div className="flex justify-end gap-3 w-full mt-8">
           <p>Don't have an account?</p>
           <Link
             to={"/sign-up"}

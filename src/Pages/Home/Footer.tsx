@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "../../Components/Title";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { TwitterLogoIcon } from "@radix-ui/react-icons";
 
 const Footer: React.FC = () => {
   return (
@@ -20,7 +21,7 @@ const Footer: React.FC = () => {
                 <FaInstagram />
               </div>
               <div className=" rounded-full size-8 flex justify-center items-center border-neutral-500 text-neutral-500 border-2 ">
-                <FaFacebookF />
+                <TwitterLogoIcon />
               </div>
             </div>
           </div>
@@ -65,7 +66,7 @@ const Footer: React.FC = () => {
               <FaInstagram />
             </div>
             <div className=" rounded-full size-8 flex justify-center items-center border-neutral-500 text-neutral-500 border-2 ">
-              <FaFacebookF />
+              <TwitterLogoIcon />
             </div>
           </div>
         </div>

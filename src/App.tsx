@@ -9,9 +9,9 @@ import {
   WishList,
   Search,
   NotFound,
-  Book,
   Cart,
   Profile,
+  Products,
 } from "./Pages/routes";
 import { Toaster } from "./Components/ui/toaster";
 import { useSelector } from "react-redux";
@@ -30,8 +30,8 @@ const App: React.FC = () => {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/" element={<Body />}>
             <Route index element={<Home />} />
+            <Route path="products" element={<Products />} />
             <Route path="search/:searchvalue" element={<Search />} />
-            <Route path="book/:BookId" element={<Book />} />
             <Route
               path="wish-list"
               element={

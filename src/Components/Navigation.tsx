@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Title from "./Title";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingBag, User } from "lucide-react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const Navigation: React.FC = () => {
+  const { loggedIn } = useSelector((store: RootState) => store.user);
   const [scrollPos, setScrollPos] = useState<number>(0);
   const location = useLocation();
   useEffect(() => {
@@ -23,37 +26,50 @@ const Navigation: React.FC = () => {
       />
       <ul className="w-full hidden md:flex text-sm lg:text-base items-center  justify-start gap-3 lg:gap-5 xl:gap-8 font-semibold text-neutral-400 ">
         <Link
-          className={`${location.pathname === "/" ? "text-black" : "hover:text-neutral-600"}`}
+          className={`${location.pathname === "/" ? "text-black underline underline-offset-4 decoration-wavy decoration-primary-divert" : "hover:text-neutral-600"} animate-in animate-accordion-down transition-all ease-in-out duration-700`}
           to={"/"}
         >
           Home
         </Link>
         <Link
           to={"/products"}
-          className={` ${location.pathname === "/products" ? "text-black" : "hover:text-neutral-600"} transition-colors`}
+          className={` ${location.pathname === "/products" ? "text-black underline underline-offset-4 decoration-wavy decoration-primary-divert" : "hover:text-neutral-600"} animate-in animate-accordion-down transition-all ease-in-out duration-700`}
         >
           Products
         </Link>
         <Link
           to={"/contacts"}
-          className={` ${location.pathname === "/contacts" ? "text-black" : "hover:text-neutral-600"}`}
+          className={` ${location.pathname === "/contacts" ? "text-black underline underline-offset-4 decoration-wavy decoration-primary-divert" : "hover:text-neutral-600"} animate-in animate-accordion-down transition-all ease-in-out duration-700`}
         >
           Contacts
         </Link>
       </ul>
       <div className="flex justify-center gap-3 lg:gap-8 items-center  text-neutral-500">
-        <Link
-          to={"/my-cart"}
-          className={` ${location.pathname === "/my-cart" ? "text-black" : "hover:text-neutral-600"} h-6 w-6`}
-        >
-          <ShoppingBag className="h-6 w-6" />
-        </Link>
-        <Link
-          to={"/profile"}
-          className={` ${location.pathname === "/profile" ? "text-black" : "hover:text-neutral-600"} h-6 w-6`}
-        >
-          <User className="h-6 w-6" />
-        </Link>
+        {loggedIn ? (
+          <>
+            <Link
+              to={"/my-cart"}
+              className={` ${location.pathname === "/my-cart" ? "text-black " : "hover:text-neutral-600"} h-6 w-6`}
+            >
+              <ShoppingBag className="h-6 w-6" />
+            </Link>
+            <Link
+              to={"/profile"}
+              className={` ${location.pathname === "/profile" ? "text-black" : "hover:text-neutral-600"} h-6 w-6`}
+            >
+              <User className="h-6 w-6" />
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              to={"/sign-in"}
+              className="px-4 py-1 whitespace-nowrap bg-primary rounded-md text-black hover:bg-primary-hover transition-colors"
+            >
+              Sign In
+            </Link>
+          </>
+        )}
         <div className="bg-neutral-500 w-[2px] h-6  inline" />
         <button type="button" className="text-neutral-500">
           <svg

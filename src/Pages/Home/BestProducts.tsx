@@ -1,10 +1,11 @@
 import React from "react";
+import { ArrowRight } from "lucide-react";
+
 import image1 from "../../../public/shoes/1.jpg";
 import image2 from "../../../public/shoes/2.jpg";
 import image3 from "../../../public/shoes/3.jpg";
 import image4 from "../../../public/shoes/4.jpg";
 import image5 from "../../../public/shoes/5.jpg";
-import { ArrowRight } from "lucide-react";
 
 const shoes = [
   { image: image1, name: "Sneaker A", price: 99.99 },

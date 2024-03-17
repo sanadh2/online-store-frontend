@@ -5,7 +5,7 @@ import Home from "./Home";
 import WishList from "./WishList";
 import Search from "./Search";
 import NotFound from "./NotFound";
-import Book from "./Book";
 import Cart from "./Cart";
 import Profile from "./Profile";
-export   {SignIn,SignUp,Body,Home,WishList,Search,NotFound,Book,Cart,Profile}
+import Products from "./Products.tsx";
+export   {SignIn,SignUp,Body,Home,WishList,Search,NotFound,Cart,Profile,Products}

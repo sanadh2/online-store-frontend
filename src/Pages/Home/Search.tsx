@@ -6,6 +6,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     if (inputRef.current) inputRef.current.focus();
   }, []);
+
   return (
     <div className="bg-primary h-auto w-full mx-auto mt-10 rounded-lg flex p-3 md:p-7 overflow-hidden">
       <div className="w-full md:w-full p-3 flex justify-center items flex-col">
