@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Title from "./Title";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag, User } from "lucide-react";
+import { Heart, ShoppingBag, User } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { baseURL } from "../Api/server";
 
 const Navigation: React.FC = () => {
-  const { loggedIn } = useSelector((store: RootState) => store.user);
+  const { loggedIn, data: userData } = useSelector(
+    (store: RootState) => store.user
+  );
   const [scrollPos, setScrollPos] = useState<number>(0);
   const location = useLocation();
   useEffect(() => {
@@ -16,10 +19,9 @@ const Navigation: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <nav
-      className={`navbar ${scrollPos > 3 && "shadow"} transition-all ease-in-out duration-300 flex h-20 bg-neutral-100 dark:bg-neutral-800  sticky z-30 top-0 px-3 md:px-5 lg:px-10 gap-5 md:gap-10 xl:gap-20 font-Poppins items-center justify-between`}
+      className={`navbar ${scrollPos > 3 && "shadow"} transition-all ease-in-out duration-300 flex h-14 md:h-20 bg-neutral-100 dark:bg-neutral-800  sticky z-30 top-0 px-3 md:px-5 lg:px-10 gap-5 md:gap-10 xl:gap-20 font-Poppins items-center justify-between`}
     >
       <Title
         className={`${scrollPos < 100 ? "md:text-3xl lg:text-4xl " : "lg:text-3xl"} transition-all ease-in duration-300 `}
@@ -49,15 +51,46 @@ const Navigation: React.FC = () => {
           <>
             <Link
               to={"/my-cart"}
-              className={` ${location.pathname === "/my-cart" ? "text-black " : "hover:text-neutral-600"} h-6 w-6`}
+              className={` ${location.pathname === "/my-cart" ? "text-black " : "hover:text-neutral-600"} h-6 w-6 relative`}
             >
-              <ShoppingBag className="h-6 w-6" />
+              <ShoppingBag className="size-full " />
+              <span className="absolute -top-2 -right-2 size-5 rounded-full bg-primary flex justify-center items-center text-xs ">
+                {userData?.cartList.length}
+              </span>
+            </Link>
+            <Link
+              to={"/wish-list"}
+              className={` ${location.pathname === "/my-cart" ? "text-black " : "hover:text-neutral-600"} h-6 w-6 relative`}
+            >
+              <Heart className="size-full" />
+              <span className="absolute -top-2 -right-2 size-5 rounded-full bg-primary flex justify-center items-center text-xs ">
+                {userData?.wishList.length}
+              </span>
             </Link>
             <Link
               to={"/profile"}
-              className={` ${location.pathname === "/profile" ? "text-black" : "hover:text-neutral-600"} h-6 w-6`}
+              className={` ${location.pathname === "/profile" ? "text-black" : "hover:text-neutral-600"} size-fit`}
             >
-              <User className="h-6 w-6" />
+              {userData ? (
+                <div className="size-10 rounded-full aspect-square border border-black">
+                  <img
+                    src={baseURL + userData.avatar}
+                    onError={(e) => {
+                      if (userData.gender === "male")
+                        e.currentTarget.src = "/male-avatar.jpg";
+                      else if (userData.gender === "female")
+                        e.currentTarget.src = "/female-avatar.jpg";
+                      else if (userData.gender === "others")
+                        e.currentTarget.src = "/others-avatar.jpg";
+                      e.currentTarget.onerror = null;
+                    }}
+                    className="w-full h-full rounded-full aspect-square"
+                    alt=""
+                  />
+                </div>
+              ) : (
+                <User className="h-6 w-6" />
+              )}
             </Link>
           </>
         ) : (

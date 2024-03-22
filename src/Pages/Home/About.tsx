@@ -4,7 +4,7 @@ import { FaShoePrints } from "react-icons/fa";
 
 const About: React.FC = () => {
   return (
-    <div className="mt-40">
+    <div className=" mt-20 md:mt-40">
       <div className="flex flex-col justify-center items-center">
         <h2 className="text-3xl font-extrabold text-center">About Us</h2>
         <p className="text-neutral-500 text-sm">

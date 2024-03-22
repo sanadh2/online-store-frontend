@@ -21,7 +21,9 @@ const useForm = <T extends FormState>(
     setValues(clearedValues);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setValues({
       ...values,
@@ -46,6 +48,14 @@ const useForm = <T extends FormState>(
     }));
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate(values);
@@ -57,7 +67,6 @@ const useForm = <T extends FormState>(
       console.log("Form has validation errors:", validationErrors);
     }
   };
-
   return {
     values,
     errors,
@@ -65,6 +74,7 @@ const useForm = <T extends FormState>(
     handleFileChange,
     handleSubmit,
     clearFields,
+    handleSelectChange,
   };
 };
 

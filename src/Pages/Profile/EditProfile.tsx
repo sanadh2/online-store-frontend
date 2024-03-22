@@ -81,7 +81,6 @@ const EditProfile: React.FC = () => {
     if (postalCode !== initialState.postalCode)
       toUpdate.postalCode = postalCode;
     if (state !== initialState.state) toUpdate.state = state;
-    console.log(toUpdate);
     updateUserApi(toUpdate).then(() => store.dispatch(triggerUserData()));
   };
 

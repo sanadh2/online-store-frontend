@@ -13,7 +13,7 @@ interface PropTypes {
   setValue: React.Dispatch<React.SetStateAction<string | undefined>>;
   value?: string;
   placeholder: string;
-  options: number[] | string[];
+  options: (string | number)[];
   name: string;
 }
 

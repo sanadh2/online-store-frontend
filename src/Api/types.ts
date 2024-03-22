@@ -1,20 +1,11 @@
-
-export interface BookType{
-  title: string;
-  _id:string,
-  description: string;
-  author: string;
-  category: string[];
-  seller: string;
-  imageUrl: string;
-  rating: number;
-  language: string;
-  sold: number;
-  pages: number;
-  feature: boolean;
-  discount: number;
-  reviews: string[];
-  price:number;
+export type AddShoeType= {
+  name: string;
+  brand: string;
+  gender: 'boys' | 'girls' |'unisex'|"kids"|null;
+  category: 'running' | 'football' | 'casual' | 'formal'|"";
+  price: string;
+  itemsLeft: string;
+  image?: File
 }
 
 export interface UserType{
@@ -25,6 +16,7 @@ export interface UserType{
   phoneNumber: number;
   city: string;
   state: string;
+  gender:'male'|'female'|'others',
   postalCode: string;
   country: string;
   wishList: string[];
@@ -55,47 +47,9 @@ export interface DeleteUserResponseType{
   msg:string;
 }
 
-export interface FilterBooksResponseType{
- success:boolean;
-  nbh:number;
-  books:BookType[];
-  category:string[];
-  language:string[];
-}
-
-export interface GetBookResponseType{
- success:boolean;
-  book:BookType
-}
-
-export interface Top5BooksResponseType{
- success:boolean;
-  books:BookType[];
-}
-
 export interface CartType{
   _id: string;
-  book: {
-    _id: string;
-    title: string;
-    description: string;
-    author: string;
-    category: string[];
-    seller: string;
-    imageUrl: string;
-    rating: number;
-    language: string;
-    views: string[];
-    sold: number;
-    pages: number;
-    feature: boolean;
-    discount: number;
-    reviews: string[];
-    price: number;
-    __v: number;
-    createdAt: string;
-    updatedAt: string;
-  };
+  // shoe:{}
   count: number;
   user: string;
   createdAt: string;

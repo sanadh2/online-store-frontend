@@ -1,48 +1,69 @@
+import { FC, useEffect, useRef } from "react";
+import Input from "../../Components/ui/Input";
+import { Button } from "../../Components/ui/button";
 import { SearchIcon } from "lucide-react";
-import React, { useEffect, useRef } from "react";
 
-const Search: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const Search: FC<{
+  close: () => void;
+}> = ({ close }) => {
+  const inputrRef = useRef<HTMLInputElement>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (inputRef.current) inputRef.current.focus();
-  }, []);
+    const closeModel = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      else close();
+    };
+    if (inputrRef.current) inputrRef.current.focus();
+    window.addEventListener("keydown", closeModel);
+    return () => window.removeEventListener("keydown", closeModel);
+  });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleCloseModal = (e: MouseEvent) => {
+    const { target } = e;
+    if (!target || !mainRef.current) return;
+    if (!mainRef.current.contains(target as Node)) {
+      close();
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleCloseModal);
+
+    return () => {
+      document.removeEventListener("mousedown", handleCloseModal);
+    };
+  }, [handleCloseModal]);
 
   return (
-    <div className="bg-primary h-auto w-full mx-auto mt-10 rounded-lg flex p-3 md:p-7 overflow-hidden">
-      <div className="w-full md:w-full p-3 flex justify-center items flex-col">
-        <h2 className="text-4xl w-full lg:text-6xl font-Poppins font-black flex justify-start items-center">
-          Buy your dream shoes
-        </h2>
-        <div className="flex mt-5 font-medium font-Poppins gap-3 justify-start items-stretch">
-          <div className="grid place-items-center">
-            <h2 className="text-2xl w-full ml-3">50+</h2>
-            <p>Shoe categories</p>
+    <div
+      ref={mainRef}
+      className="max-w-screen-xl overflow-scroll bg-primary rounded-xl md:rounded-2xl lg:rounded-[2rem] w-full h-full border max-h-[30rem] pt-0 md:pt-0 xl:pt-0  px-3 md:px-5 lg:px-7 xl:px-10"
+    >
+      <div className="h-fit  sticky top-0 mt-4">
+        <div className="flex justify-center items-center w-full h-fit gap-2 mt-5 ">
+          <div className="relative w-full">
+            <Input ref={inputrRef} placeholder="Search " className="pl-14" />
+            <div className="absolute  left-2 top-2 flex justify-center items-center rounded-md size-8 bg-primary">
+              <SearchIcon className="" />
+            </div>
           </div>
-          <div className=" w-[1px] inline-block bg-black" />
-          <div className="grid place-items-center">
-            <h2 className="text-2xl w-full ml-3"> 100+</h2>
-            <p>customers</p>
-          </div>
-        </div>
-        <div className="h-12 w-full relative mt-5">
-          <button className="absolute left-2 top-1/2 -translate-y-1/2 size-8 flex justify-center items-center bg-primary rounded">
-            <SearchIcon className=" w-6 h-6" />
-          </button>
-
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Search"
-            className="w-full pl-12  lg:text-lg outline-none h-full rounded-md"
-          />
+          <Button
+            variant={"destructive"}
+            className="whitespace-nowrap text-sm hidden md:block"
+            onClick={close}
+          >
+            Close
+          </Button>
         </div>
       </div>
-      <div className="w-full bg-gradient-to-r from-primary to-secondary rounded-[50px] xl:rounded-[100px] hidden md:flex flex-col  justify-center items-center p-3">
-        <img
-          src="/Shoes.png"
-          alt=""
-          className=" max-h-[60vh] h-full object-center w-full object-cover"
-        />
+
+      <div className="w-full h-full flex items-center flex-col gap-2 mt-4">
+        {Array.from({ length: 7 }).map((_, index) => (
+          <div className="py-2 flex  bg-white w-full rounded-md " key={index}>
+            <img src="" alt="" className="w-10 h-10" />
+            <p>{"name"}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,59 +1,95 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
 import { signUpApi } from "../../Api/user";
 import { RxAvatar } from "react-icons/rx";
-import { toast } from "../../Components/ui/use-toast";
+import { useToast } from "../../Components/ui/use-toast";
 import { Link } from "react-router-dom";
+import useForm from "../../hooks/useForm";
 
 export type SignUpData = {
   name: string;
   email: string;
   password: string;
-  phoneNumber: number;
+  phoneNumber: string;
   city: string;
   state: string;
   postalCode: string;
   country: string;
+  gender: "male" | "female" | "others" | null;
+  avatar?: File;
 };
 
 const SignUp: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<SignUpData>();
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [avatar, setAvatar] = useState<File>();
-
-  const onSubmit = async (data: SignUpData) => {
-    console.log(data);
-    await signUpApi(data, avatar)
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.log(err);
-        toast({ variant: "destructive", title: err });
-      });
+  const initialState: SignUpData = {
+    city: "",
+    country: "",
+    email: "",
+    password: "",
+    gender: null,
+    name: "",
+    phoneNumber: "",
+    postalCode: "",
+    state: "",
   };
+  const validate = (values: SignUpData) => {
+    const errors: Record<string, string> = {};
+    if (values.city.length < 1) errors.city = "Please complete this field";
+    if (values.country.length < 1)
+      errors.country = "Please complete this field";
+    if (values.email.length < 1) errors.email = "Please complete this field";
+    if (values.password.length < 1)
+      errors.password = "Please complete this field";
+    if (!values.gender) errors.gender = "Please complete this field";
+    if (values.name.length < 1) errors.name = "Please complete this field";
+    if (values.phoneNumber.length < 1)
+      errors.phoneNumber = "Please complete this field";
+    if (values.state.length < 1) errors.state = "Please complete this field";
+    if (values.phoneNumber.length < 1)
+      errors.phoneNumber = "Please complete this field";
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue: string = e.target.value;
-    const numericValue: string = inputValue.replace(/[^0-9]/g, "");
-    setPhoneNumber(numericValue);
-    setValue("phoneNumber", parseInt(numericValue, 10));
+    if (/^(.{1,7}|[^a-zA-Z0-9]+)$/.test(values.password))
+      errors.password = "weak password";
+    return errors;
   };
+  const { toast } = useToast();
+  const onSubmit = async () => {
+    console.log(values);
+    signUpApi(values)
+      .then((res) => toast({ variant: "destructive", title: res }))
+      .catch((err: Error) =>
+        toast({ variant: "destructive", title: err.message })
+      );
+  };
+  const { errors, values, handleSubmit, handleFileChange, handleInputChange } =
+    useForm(initialState, validate, onSubmit);
 
-  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    setAvatar(file);
-  };
+  const [passwordCheck, setPasswordCheck] = useState<
+    "weak" | "fair" | "strong" | "good" | null
+  >(null);
+
+  function passwordChecker(password: string) {
+    if (
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]).{8,}$/.test(
+        password
+      )
+    )
+      return "strong";
+    else if (/^(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password)) return "fair";
+    else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password))
+      return "good";
+    else return "weak";
+  }
+  const [ispasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
+  useEffect(() => {
+    setPasswordCheck(passwordChecker(values.password));
+  }, [values.password, passwordCheck]);
+
   return (
     <div className="h-svh flex justify-center items-center">
       <div className="min-h-80 min-w-40 w-full max-w-[40rem] border rounded-lg p-3">
         <h1 className="text-3xl font-Montserrat text-center my-4">Sign Up</h1>
         <form
-          className="lg:p-3 h-full  rounded-md font-Outfit "
-          onSubmit={handleSubmit(onSubmit)}
+          className="lg:p-3 h-full  rounded-md"
+          onSubmit={handleSubmit}
           method="POST"
           action=""
         >
@@ -61,19 +97,16 @@ const SignUp: React.FC = () => {
           <div className="w-full">
             <input
               type="text"
-              className="w-full pl-3 bg-black outline-none rounded h-10"
+              className="w-full pl-3 outline-none ring-1 focus:ring-2 ring-primary-divert rounded h-10"
               placeholder="Name"
               required
-              {...register("name", {
-                minLength: {
-                  value: 3,
-                  message: "must have at least 3 letters",
-                },
-                required: true,
-              })}
+              autoFocus
+              name="name"
+              value={values.name}
+              onChange={handleInputChange}
             />
             {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+              <p className="text-red-500 text-sm">{errors.name}</p>
             )}
           </div>
           <div className="mt-3 md:mt-0 flex justify-between flex-col md:flex-row gap-3 w-full">
@@ -81,28 +114,51 @@ const SignUp: React.FC = () => {
             <div className="mt-0 md:mt-3 w-full">
               <input
                 type="email"
-                className="w-full pl-3 bg-black outline-none rounded h-10"
+                className="w-full pl-3 outline-none ring-1 focus:ring-2 ring-primary-divert rounded h-10"
                 placeholder="Email"
                 required
-                {...register("email")}
+                name="email"
+                value={values.email}
+                onChange={handleInputChange}
               />
             </div>
             {/* password */}
             <div className="mt-0 md:mt-3 w-full">
               <input
-                type="password"
+                type=""
+                name="password"
+                onFocus={() => setIsPasswordFocused(true)}
+                onBlur={() => setIsPasswordFocused(false)}
                 autoComplete="Password"
-                className="w-full pl-3 bg-black  outline-none rounded h-10"
+                className="w-full pl-3 ring-1 focus:ring-2 ring-primary-divert outline-none rounded h-10"
                 placeholder="Password"
                 required
-                {...register("password", {
-                  minLength: 8,
-                })}
+                value={values.password}
+                onChange={(e) => {
+                  handleInputChange(e);
+                  setPasswordCheck(passwordChecker(e.target.value));
+                }}
               />
+              {ispasswordFocused &&
+                values.password.length > 0 &&
+                !errors.password && (
+                  <div className={`h-1 flex gap-2 w-full mt-2`}>
+                    <div
+                      className={`h-full w-full rounded-full ${passwordCheck !== "weak" ? (passwordCheck !== "fair" ? (passwordCheck !== "good" ? "bg-green-500" : "bg-blue-500") : "bg-yellow-500") : "bg-red-500"}`}
+                    ></div>
+                    <div
+                      className={`h-full w-full rounded-full ${passwordCheck !== "weak" ? (passwordCheck !== "fair" ? (passwordCheck !== "good" ? "bg-green-500" : "bg-blue-500") : "bg-yellow-500") : "bg-red-500"}`}
+                    ></div>
+                    <div
+                      className={`h-full w-full rounded-full ${passwordCheck !== "weak" ? (passwordCheck !== "fair" ? (passwordCheck !== "good" ? "bg-green-500" : "bg-blue-500") : "bg-yellow-500") : "bg-red-500"}`}
+                    ></div>
+                    <div
+                      className={`h-full w-full rounded-full ${passwordCheck !== "weak" ? (passwordCheck !== "fair" ? (passwordCheck !== "good" ? "bg-green-500" : "bg-blue-500") : "bg-yellow-500") : "bg-red-500"}`}
+                    ></div>
+                  </div>
+                )}
               {errors.password && (
-                <p className="text-red-500 text-sm">
-                  {errors.password.message}
-                </p>
+                <p className="text-red-500 text-sm">{errors.password}</p>
               )}
             </div>
           </div>
@@ -110,26 +166,62 @@ const SignUp: React.FC = () => {
           {/* phoneNumber */}
           <div className="mt-3 w-full">
             <input
-              type="text"
+              type="number"
               id="number"
               autoComplete="Phone Number"
-              className="w-full pl-3 bg-black outline-none rounded h-10"
+              className="w-full pl-3 ring-1 focus:ring-2 ring-primary-divert outline-none rounded h-10"
               placeholder="Phone Number"
               required
-              {...register("phoneNumber", {
-                max: {
-                  value: 9999999999,
-                  message: "invalid phone number",
-                },
-                min: { value: 100000000, message: "invalid phone number" },
-              })}
-              onChange={onChange}
-              value={phoneNumber}
+              name="phoneNumber"
+              value={values.phoneNumber}
+              onChange={handleInputChange}
             />
             {errors.phoneNumber && (
-              <p className="text-red-500 text-sm">
-                {errors.phoneNumber.message}
-              </p>
+              <p className="text-red-500 text-sm">{errors.phoneNumber}</p>
+            )}
+          </div>
+
+          <div className="mt-3 w-full">
+            <div className="flex w-full items-center gap-3">
+              <h3 className="pl-3 pr-8 rounded h-10 justify-center flex items-center w-fit text-neutral-500 bg-white">
+                Gender:
+              </h3>
+              <label htmlFor="male">male</label>
+              <input
+                type="checkbox"
+                id="male"
+                autoComplete="Phone Number"
+                className="accent-primary-divert "
+                placeholder="Phone Number"
+                name="gender"
+                value={"male"}
+                onChange={handleInputChange}
+                checked={values.gender === "male"}
+              />
+              <label htmlFor="female">female</label>
+              <input
+                type="checkbox"
+                id="female"
+                className="accent-primary-divert "
+                name="gender"
+                value={"female"}
+                checked={values.gender === "female"}
+                onChange={handleInputChange}
+              />
+              <label htmlFor="pthers">others</label>
+              <input
+                type="checkbox"
+                id="others"
+                className="accent-primary-divert "
+                name="gender"
+                value={"others"}
+                checked={values.gender === "others"}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            {errors.gender && (
+              <p className="text-red-500 text-sm">{errors.gender}</p>
             )}
           </div>
 
@@ -140,10 +232,12 @@ const SignUp: React.FC = () => {
                 type="text"
                 id="city"
                 autoComplete="City"
-                className="w-full pl-3 bg-black outline-none rounded h-10"
+                className="w-full pl-3 ring-1 focus:ring-2 ring-primary-divert outline-none rounded h-10"
                 placeholder="City"
                 required
-                {...register("city")}
+                name="city"
+                value={values.city}
+                onChange={handleInputChange}
               />
             </div>
             {/* postal code */}
@@ -151,11 +245,13 @@ const SignUp: React.FC = () => {
               <input
                 type="text"
                 id="postal-code"
-                autoComplete="Postal Code"
-                className="w-full pl-3 bg-black outline-none rounded h-10"
+                autoComplete="Post  al Code"
+                className="w-full pl-3 ring-1 focus:ring-2 ring-primary-divert outline-none rounded h-10"
                 placeholder="Postal Code"
                 required
-                {...register("postalCode")}
+                name="postalCode"
+                value={values.postalCode}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -167,10 +263,12 @@ const SignUp: React.FC = () => {
                 type="text"
                 id="country"
                 autoComplete="Country"
-                className="w-full pl-3 bg-black outline-none rounded h-10"
+                className="w-full pl-3 ring-1 focus:ring-2 ring-primary-divert outline-none rounded h-10"
                 placeholder="Country"
                 required
-                {...register("country")}
+                name="country"
+                value={values.country}
+                onChange={handleInputChange}
               />
             </div>
             {/* state */}
@@ -179,10 +277,12 @@ const SignUp: React.FC = () => {
                 type="text"
                 id="state"
                 autoComplete="Country"
-                className="w-full pl-3 bg-black outline-none rounded h-10"
+                className="w-full pl-3 ring-1 focus:ring-2 ring-primary-divert outline-none rounded h-10"
                 placeholder="State"
                 required
-                {...register("state")}
+                name="state"
+                value={values.state}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -191,23 +291,22 @@ const SignUp: React.FC = () => {
             <input
               type="file"
               accept="image/*"
-              className="sr-only"
+              className="sr-only peer"
               id="avatar"
-              onChange={onFileChange}
+              name="avatar"
+              onChange={handleFileChange}
             />
             <label
               htmlFor="avatar"
-              tabIndex={1}
-              className="w-full cursor-pointer  h-10 rounded flex justify-normal pl-3 items-center bg-black"
+              className="w-full cursor-pointer ring-1 peer-focus:ring-2 ring-primary-divert peer-focus:outline-primary-divert text-neutral-500 bg-white outline-primary  h-10 rounded flex justify-normal pl-3 items-center  "
             >
               Add avatar
             </label>
-            {avatar ? (
+            {values.avatar ? (
               <img
                 draggable={false}
                 alt="avatar"
-                id="avatar"
-                src={URL.createObjectURL(avatar)}
+                src={URL.createObjectURL(values.avatar)}
                 className=" object-cover rounded-full pointer-events-none absolute aspect-square top-1 right-3 h-8"
               />
             ) : (

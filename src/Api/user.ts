@@ -14,7 +14,7 @@ const baseApi = axios.create({
   withCredentials: true,
 });
 
-export const signUpApi = async (data: SignUpData, avatar: File | undefined) => {
+export const signUpApi = async (data: SignUpData) => {
   const formData = new FormData();
   formData.append("name", data.name);
   formData.append("email", data.email);
@@ -24,24 +24,24 @@ export const signUpApi = async (data: SignUpData, avatar: File | undefined) => {
   formData.append("state", data.state);
   formData.append("postalCode", data.postalCode);
   formData.append("country", data.country);
-  if (avatar) formData.append("avatar", avatar);
+  if(data.gender)  formData.append("gender",data.gender);
+  if (data.avatar) formData.append("avatar", data.avatar);
   try {
-    const response = await baseApi.postForm("/sign-up/", formData, {
+    const response:AxiosResponse<{success:boolean,message:string}> = await baseApi.postForm("/sign-up/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    return response;
+    return response.data.message;
   } catch (error) {
     console.error("An error occurred during sign up:", error);
-    if (axios.isAxiosError(error)) {
-      if (error.response) {
+    if (axios.isAxiosError(error) && error.response) {
         const data = error.response.data as ErrorResponseType;
-        throw data.msg;
+        throw new Error(data.msg);
       } else {
-        throw "something went wrong";
+        throw new Error("something went wrong");
       }
-    }
+    
   }
 };
 

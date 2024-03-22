@@ -4,7 +4,7 @@ import React from "react";
 import {
   SignIn,
   SignUp,
-  Body,
+  Layout,
   Home,
   WishList,
   Search,
@@ -17,21 +17,24 @@ import { Toaster } from "./Components/ui/toaster";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import PrivateRoute from "./Components/PrivateRoute";
+import Dashboard from "./Admin DashBoard";
+import AuthProvider from "./hooks/Auth";
 
 const App: React.FC = () => {
   const { loggedIn } = useSelector((store: RootState) => store.user);
 
   return (
-    <div className="min-h-svh h-full font-Poppins bg-neutral-100 text-black dark:bg-neutral-800  dark:text-white ">
+    <AuthProvider className="min-h-svh h-full font-Poppins bg-neutral-100 text-black dark:bg-neutral-800  dark:text-white ">
       <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/" element={<Body />}>
+          <Route path="admin-dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="products" element={<Products />} />
-            <Route path="search/:searchvalue" element={<Search />} />
+            <Route path="search/" element={<Search />} />
             <Route
               path="wish-list"
               element={
@@ -60,7 +63,7 @@ const App: React.FC = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </AuthProvider>
   );
 };
 

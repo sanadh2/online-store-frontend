@@ -26,8 +26,6 @@ const Cart: React.FC = () => {
       });
   }, []);
 
-  console.log(loading);
-
   if (!loggedIn) return <NotLoggedIn />;
   if (loading) return <Loader />;
 

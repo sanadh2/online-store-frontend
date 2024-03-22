@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import ProductCarousal from "./ProductCarousal";
 
 import image1 from "../../../public/shoes/1.jpg";
@@ -31,6 +31,9 @@ const shoes = [
 ];
 
 const Products: FC = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className="p-3 md:p-5 lg:p-7 xl:p-10">
       <ProductCarousal shoes={shoes} name="Featured" />

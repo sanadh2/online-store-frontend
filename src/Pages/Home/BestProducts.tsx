@@ -17,9 +17,9 @@ const shoes = [
 
 const BestProducts: React.FC = () => {
   return (
-    <div className="mt-10 px-3 font-Poppins md:px-7 w-full  gap-3 grid grid-flow-col overflow-x-scroll overscroll-x-contain">
-      <div className="w-60 rounded-md h-full  p-1   ">
-        <h2 className="font-bold  mt-3 text-left text-3xl ">
+    <div className="mt-20 px-3  font-Poppins md:px-7 w-full  gap-3 grid grid-flow-col overflow-x-scroll overscroll-x-contain">
+      <div className="w-40 md:w-60 rounded-md grow p-1 text-sm md:text-base">
+        <h2 className="font-bold  mt-3 text-left text-xl md:text-3xl ">
           Best Selling Shoes
         </h2>
         <p className="mt-3 text-neutral-500">
@@ -32,15 +32,15 @@ const BestProducts: React.FC = () => {
         </button>
       </div>
       {shoes.map((shoe) => (
-        <div
-          className="w-60 h-full  aspect-[12/16] rounded-md"
-          key={shoe.image}
-        >
-          <img
-            className="h-full w-full object-cover rounded-md"
-            src={shoe.image}
-          />
-          <div className="py-1 px-2">
+        <div className="w-40 md:w-60 h-fit rounded-md" key={shoe.image}>
+          <div className="w-full h-60 md:h-80">
+            <img
+              className="h-full w-full object-cover rounded-md"
+              src={shoe.image}
+            />
+          </div>
+
+          <div className="py-1 px-2 h-fit">
             <h3 className="font-medium text-neutral-700">{shoe.name}</h3>
             <p className="text-sm text-neutral-500">₹{shoe.price}</p>
           </div>

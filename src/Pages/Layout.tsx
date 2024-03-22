@@ -1,15 +1,14 @@
 import React from "react";
-import AuthProvider from "../hooks/Auth";
 import { Outlet } from "react-router-dom";
 import MainNavigation from "../Components/Navigation";
 
-const Body: React.FC = () => {
+const Layout: React.FC = () => {
   return (
-    <AuthProvider className="min-h-svh w-full h-full flex flex-col">
+    <div className="min-h-svh w-full h-full flex flex-col">
       <MainNavigation />
       <Outlet />
-    </AuthProvider>
+    </div>
   );
 };
 
-export default Body;
+export default Layout;
